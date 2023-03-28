@@ -17,6 +17,7 @@ function App() {
       </div>
       <div> <PokemonCard /></div>
     </div>
+    
   )
 }
 
