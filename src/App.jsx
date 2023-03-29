@@ -4,15 +4,9 @@ import MyTitle from './components/MyTitle'
 import PokemonCard from "./components/PokemonCard"
 import Logo from "./components/Logo"
 import { useState } from "react";
+import NavBar from './components/NavBar';
 
 /*  -------------------------- IMPORTS   -------------------------- */
-
-
-
-
-
-
- 
 
   const pokemonList = [
     {
@@ -41,39 +35,20 @@ import { useState } from "react";
     ];
 
 
+    
  
   function App() {
 
   const [pokemonIndex, setPokemonIndex] = useState(0);
 
 
-   const suivant = () => {
-     setPokemonIndex(pokemonIndex < (pokemonList.length-1) ? pokemonIndex +1 : pokemonIndex)
-   }
-
-
-
-  const precedent = () => {
-    setPokemonIndex(pokemonIndex > 0 ? pokemonIndex - 1 : pokemonIndex )
-  }
-
-
-
-
-  /*  -------------------------- Document  JSX  --------------------------*/
   return (
     <div className="App">
-
-      
+          
+        <NavBar pokemonIndex={pokemonIndex} setPokemonIndex={setPokemonIndex} pokemonList={pokemonList}/>
         <Logo />
         <MyTitle />
-      
-       <PokemonCard pokemon={pokemonList[pokemonIndex]} /> 
-{/*      
-    <p>{pokemon}</p> */}
-
- <button onClick = {precedent}>Precedent</button>
- <button onClick = {suivant}>suiv</button>
+        <PokemonCard pokemon={pokemonList[pokemonIndex]} /> 
 
  </div>
   );
