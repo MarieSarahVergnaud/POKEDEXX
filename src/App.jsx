@@ -3,58 +3,81 @@ import './App.css'
 import MyTitle from './components/MyTitle'
 import PokemonCard from "./components/PokemonCard"
 import Logo from "./components/Logo"
+import { useState } from "react";
 
-  /*  -------------------------- IMPORTS   -------------------------- */
+/*  -------------------------- IMPORTS   -------------------------- */
 
 
 
-function App() {
 
+
+
+ 
 
   const pokemonList = [
     {
-      name: "bulbasaur",
-      imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-        type:"eau",
-    },
-    {
-      name: "mew",
-      imgSrc:"https://cdn.goodvinilos.com/4569/pokemon-mew.jpg",
-      type:"air",
-    },
-  ];
-  const pokemon = pokemonList[0]
+        name: "bulbasaur",
+        imgSrc:
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+      },
+      {
+        name: "charmander",
+        imgSrc:
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+      },
+      {
+        name: "squirtle",
+        imgSrc:
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+      },
+      {
+        name: "pikachu",
+        imgSrc:
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+      },
+      {
+        name: "mew",
+      },
+    ];
 
-  /*  -------------------------- TEST IMAGE POUR TYPE  --------------------------  */
 
-  // const pokemonType = [
-  //   {type : eau,
+ 
+  function App() {
 
-  //   },
-  //   {type : air,
+  const [pokemonIndex, setPokemonIndex] = useState(0);
 
-  //   },
-  // ]
-  // const pokemon = (pokemonList[0] + pokemonType[0]);
+
+   const suivant = () => {
+     setPokemonIndex(pokemonIndex < (pokemonList.length-1) ? pokemonIndex +1 : pokemonIndex)
+   }
+
+
+
+  const precedent = () => {
+    setPokemonIndex(pokemonIndex > 0 ? pokemonIndex - 1 : pokemonIndex )
+  }
+
+
+
 
   /*  -------------------------- Document  JSX  --------------------------*/
-
   return (
-
     <div className="App">
-      <div>
+
+      
         <Logo />
         <MyTitle />
-      </div>
-      <div> <PokemonCard propriete={pokemon} /></div>
+      
+       <PokemonCard pokemon={pokemonList[pokemonIndex]} /> 
+{/*      
+    <p>{pokemon}</p> */}
 
-    </div>
+ <button onClick = {precedent}>Precedent</button>
+ <button onClick = {suivant}>suiv</button>
 
-
-  )
+ </div>
+  );
 }
 
 
 export default App
-
