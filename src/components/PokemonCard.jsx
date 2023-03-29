@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 
 
 
-function PokemonCard(props) {
+function PokemonCard({pokemon}) {
    return (
    <figure>
-      <p>{props.propriete.imgSrc ? <img src={props.propriete.imgSrc}/> : "??? Mais ou es tu ?"}</p>
-      <figcaption>{props.propriete.name} </figcaption>
-      <h2>{props.propriete.type}</h2>
+      <p>{pokemon.imgSrc ? <img src={pokemon.imgSrc}/> : "??? Mais ou es tu ?"}</p>
+      <figcaption>{pokemon.name} </figcaption>
+      <h2>{pokemon.type}</h2>
     </figure>
    );
 }
+
 
 
 PokemonCard.propTypes = {
